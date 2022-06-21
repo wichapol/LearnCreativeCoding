@@ -16,19 +16,65 @@
         let canvas = document.querySelector('canvas');
         let context = canvas.getContext('2d');
 
-        context.fillStyle = 'blue';
+        // Gradient foreground
+        const fill = context.createLinearGradient(0, 0, 500, 500);
+        fill.addColorStop(0, 'cyan');
+        fill.addColorStop(1, 'orange');
+
+        // Fill rectangle
+        context.fillStyle = fill;
+        context.strokeStyle = fill;
+
         // context.fillRect(100, 100, 400, 400); // x, y, width, height
 
         context.lineWidth = 4;
         context.beginPath();
         context.rect(100, 100, 400, 400);
-        context.strokeStyle = 'blue'
-        context.stroke();
+        // context.strokeStyle = 'blue'
+        // context.stroke();
 
         context.beginPath();
         context.arc(300, 300, 150, 0, Math.PI * 2);
-        context.fillStyle = 'blue';
-        context.fill();
+        //context.fillStyle = 'blue';
+        // context.fill();
+        let width = 60;
+        let height = 60;
+        let gap = 20;
+        let x, y;
+
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                x = 100 + (width + gap) * i
+                y = 100 + (width + gap) * j
+
+                context.strokeStyle = ''
+
+                if (Math.random() > 0.6) {
+                    context.beginPath();
+                    context.arc(x + width / 2, y + height / 2, (width) / 2, 0, Math.PI * 2);
+                    context.strokeStyle = fill;
+                    context.stroke();
+                }
+                if (Math.random() < 0.1) {
+                    context.beginPath();
+                    context.arc(x + width / 2, y + height / 2, (width) / 2, 0, Math.PI * 2);
+                    context.fill();
+                }
+                if (Math.random() > 0.7) {
+                    context.beginPath();
+                    context.arc(x + width / 2, y + height / 2, (width - 16) / 2, 0, Math.PI * 2);
+                    context.fill();
+                }
+
+                if (Math.random() > 0.7) {
+                    context.beginPath();
+                    context.arc(x + width / 2, y + height / 2, (width - 16) / 2, 0, Math.PI * 2);
+                    context.strokeStyle = "white";
+                    context.stroke();
+                }
+
+            }
+        }
 
     </script>
 </body>
