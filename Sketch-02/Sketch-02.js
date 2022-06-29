@@ -4,6 +4,11 @@ const random = require("canvas-sketch-util/random");
 
 const settings = {
   dimensions: [1080, 1080],
+  // Enable an animation loop
+  /*: true,
+  duration: 1,
+  timeScale: 1,
+  playbackRate: "fixed",*/
 };
 
 const sketch = () => {
@@ -35,7 +40,7 @@ const sketch = () => {
 
     let x, y;
 
-    const num = 44;
+    const num = 40;
     const radius = width * random.range(0.2, 0.4);
 
     for (let i = 0; i < num; i++) {
@@ -77,3 +82,7 @@ const sketch = () => {
 };
 
 canvasSketch(sketch, settings);
+
+setTimeout(() => {
+  location.reload();
+}, 1000);

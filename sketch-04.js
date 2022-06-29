@@ -18,6 +18,7 @@ const params = {
   frame: 0,
   animate: true,
   lineCap: "butt",
+  speed: 10,
 };
 
 const sketch = () => {
@@ -51,7 +52,7 @@ const sketch = () => {
       const f = params.animate ? frame : params.frame;
 
       //const n = random.noise2D(x + frame * 10, y, params.freq);
-      const n = random.noise3D(x, y, f * 10, params.freq);
+      const n = random.noise3D(x, y, f * params.speed, params.freq);
 
       const angle = n * Math.PI * params.amp;
 
@@ -97,6 +98,7 @@ const createPane = () => {
   folder.addInput(params, "amp", { min: 0, max: 1 });
   folder.addInput(params, "animate");
   folder.addInput(params, "frame", { min: 0, max: 999 });
+  folder.addInput(params, "speed", { min: 1, max: 100 });
 };
 
 createPane();
